@@ -5,6 +5,8 @@ using System.Text;
 
 namespace NewInCS6
 {
+    using static System.Console;
+
     class MyClass
     {
         public int TimewTwo(int x) => x * 2;
@@ -22,6 +24,7 @@ namespace NewInCS6
             TestExpressionBodiedFunctions();
             IndexInitializers();
             ExceptionFilter();
+            WriteLine("Done"); // "using static System.Console"
         }
 
         private static void ExceptionFilter()
