@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewInCS6", "NewInCS6\NewInCS6.csproj", "{83D7C57A-509D-4773-AC4E-786A914DE84B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueOrRefType", "ValueOrRefType\ValueOrRefType.csproj", "{FE8C7C14-F700-46FB-8522-E36D9D55F0A5}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumericTypes", "NumericTypes\NumericTypes.csproj", "{B3A38957-707B-440B-A092-285B7DDE209A}"
 EndProject
 Global
@@ -17,6 +19,10 @@ Global
 		{83D7C57A-509D-4773-AC4E-786A914DE84B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83D7C57A-509D-4773-AC4E-786A914DE84B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83D7C57A-509D-4773-AC4E-786A914DE84B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE8C7C14-F700-46FB-8522-E36D9D55F0A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE8C7C14-F700-46FB-8522-E36D9D55F0A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE8C7C14-F700-46FB-8522-E36D9D55F0A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE8C7C14-F700-46FB-8522-E36D9D55F0A5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B3A38957-707B-440B-A092-285B7DDE209A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B3A38957-707B-440B-A092-285B7DDE209A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3A38957-707B-440B-A092-285B7DDE209A}.Release|Any CPU.ActiveCfg = Release|Any CPU
