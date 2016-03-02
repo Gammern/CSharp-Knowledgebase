@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Variance", "Variance\Varian
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delegates", "Delegates\Delegates.csproj", "{5E51BD3D-ECE4-4235-B308-3634AC741246}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Events", "Events\Events.csproj", "{38744A9A-7D11-452A-8265-EB48DADA9209}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{5E51BD3D-ECE4-4235-B308-3634AC741246}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E51BD3D-ECE4-4235-B308-3634AC741246}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E51BD3D-ECE4-4235-B308-3634AC741246}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38744A9A-7D11-452A-8265-EB48DADA9209}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38744A9A-7D11-452A-8265-EB48DADA9209}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38744A9A-7D11-452A-8265-EB48DADA9209}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38744A9A-7D11-452A-8265-EB48DADA9209}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
