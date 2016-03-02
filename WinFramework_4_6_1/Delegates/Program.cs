@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Delegates
 {
-    public delegate T Transformer<T>(T x);
+    public delegate TRes Transformer<in T, out TRes>(T x);
     // Multicast delegates "must" return void
     public delegate void ProgressReporter(int percentComplete);
 
@@ -47,7 +43,10 @@ namespace Delegates
 
         static void Main(string[] args)
         {
-            Func<int, int> Square2 = x => x * x; // incompatible with Transformer, but not Func<int,int>
+            Func<int, int> Square2 = x => x * x;    // incompatible with Transformer, but not Func<int,int>
+            Transformer<int,int> Sqr = x => x * x;      // same signature, different type
+            //Square2 = Sqr; error
+            //Sqr = Square2; error
 
             int[] values = { 1, 2, 3 };
             Util.Transform(values, Square2);
