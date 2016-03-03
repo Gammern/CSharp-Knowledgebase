@@ -12,8 +12,9 @@ namespace Events
 
     public class Broadcaster
     {
-
+#pragma warning disable 67        
         public event PriceChangedHandler PriceChanged; // old style
+#pragma warning restore 67        
 
         // compiler translates this to something like
         private PriceChangedHandler _priceChanged;
