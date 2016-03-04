@@ -33,6 +33,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnumAndIterators", "EnumAnd
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperatorOverloading", "OperatorOverloading\OperatorOverloading.csproj", "{716007B4-8467-41A4-BB6E-2464B9C0BB1E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionMethods", "ExtensionMethods\ExtensionMethods.csproj", "{FDF208D0-029C-4F7F-84C7-537DD85E0CEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CallerInfoAttributes", "CallerInfoAttributes\CallerInfoAttributes.csproj", "{D1F71686-EBF9-4D0E-BFD0-8DA185FFE98D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +99,14 @@ Global
 		{716007B4-8467-41A4-BB6E-2464B9C0BB1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{716007B4-8467-41A4-BB6E-2464B9C0BB1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{716007B4-8467-41A4-BB6E-2464B9C0BB1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDF208D0-029C-4F7F-84C7-537DD85E0CEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDF208D0-029C-4F7F-84C7-537DD85E0CEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDF208D0-029C-4F7F-84C7-537DD85E0CEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDF208D0-029C-4F7F-84C7-537DD85E0CEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1F71686-EBF9-4D0E-BFD0-8DA185FFE98D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1F71686-EBF9-4D0E-BFD0-8DA185FFE98D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1F71686-EBF9-4D0E-BFD0-8DA185FFE98D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1F71686-EBF9-4D0E-BFD0-8DA185FFE98D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
