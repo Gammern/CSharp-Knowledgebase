@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionMethods", "Extensi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CallerInfoAttributes", "CallerInfoAttributes\CallerInfoAttributes.csproj", "{D1F71686-EBF9-4D0E-BFD0-8DA185FFE98D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateAndTime", "DateAndTime\DateAndTime.csproj", "{0B787A78-4487-4308-AC87-661D9A39287B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -107,6 +109,10 @@ Global
 		{D1F71686-EBF9-4D0E-BFD0-8DA185FFE98D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1F71686-EBF9-4D0E-BFD0-8DA185FFE98D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1F71686-EBF9-4D0E-BFD0-8DA185FFE98D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B787A78-4487-4308-AC87-661D9A39287B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B787A78-4487-4308-AC87-661D9A39287B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B787A78-4487-4308-AC87-661D9A39287B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B787A78-4487-4308-AC87-661D9A39287B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
