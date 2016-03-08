@@ -22,6 +22,18 @@ namespace Collections
 
             MyIntList c2 = new MyIntList();
             foreach (int i in c2) Console.WriteLine(i);
+
+            List<int> il = new List<int>(c1);
+            foreach (var item in il.AsReadOnly())
+            {
+                Console.WriteLine(item);
+            }
+
+            LinkedList<double> dll = new LinkedList<double>(new double[] { 1.0, 2.71, 3.14 });
+            foreach (var item in dll)
+            {
+                Console.WriteLine(item);
+            }
         }
 
     }
