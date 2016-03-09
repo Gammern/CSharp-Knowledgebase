@@ -17,8 +17,7 @@ namespace Collections
             using (IEnumerator<int> rtor = c1.GetEnumerator())
             {
                 while (rtor.MoveNext()) Console.WriteLine(rtor.Current);
-                // rtor.Dispose();
-            }
+            } // rtor.Dispose(); called automatically cause of "using()"
 
             MyIntList c2 = new MyIntList();
             foreach (int i in c2) Console.WriteLine(i);
