@@ -22,12 +22,27 @@ namespace Operators
             }
             WhereSample();
             WhereSample2();
+            TakeWhileSample();
+            Projecting();
+        }
+
+        private static void Projecting()
+        {
+            var query = from f in System.Windows.Media.Fonts.SystemFontFamilies
+                        select f.ToString();
+            Console.WriteLine("Fonts: " + TS(query));
+        }
+
+        private static void TakeWhileSample()
+        {
+            int[] numbers = {3,5,2,400,4,1 };
+            var query = numbers.TakeWhile(n => n < 100);
+            Console.WriteLine("Numbers: " + TS(query));
         }
 
         private static void WhereSample2()
         {
-            var query = names.Where(s => new []{ "Tom", "Jay" }.Contains(s));
-            Console.WriteLine(query);
+            var query = names.Where(s => new[] { "Tom", "Jay" }.Contains(s));
             Console.WriteLine("Where2: " + TS(query));
         }
 
