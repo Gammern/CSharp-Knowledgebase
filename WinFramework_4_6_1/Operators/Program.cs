@@ -29,6 +29,28 @@ namespace Operators
             SubQuery();
             SelectManySample();
             SelectManySample2();
+            JoinSample();
+        }
+
+        private static void JoinSample()
+        {
+            using (var db = new NutshellContextDataContext())
+            {
+                var customers = db.Customers.ToArray();
+                var purchases = db.Purchases.ToArray();
+                var slowQuery =
+                    from c in customers
+                    from p in purchases
+                    where c.ID == p.CustomerID
+                    select c.Name + " bought a " + p.Description;
+
+                var fastQuery =
+                    from c in customers
+                    join p in purchases on c.ID equals p.CustomerID
+                    select c.Name + " bought a " + p.Description;
+
+
+            }
         }
 
         private static void SelectManySample2()
