@@ -63,6 +63,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projecting", "Projecting\Pr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReaderTest", "ReaderTest\ReaderTest.csproj", "{ADB892E6-76D7-4DDC-89DF-D7752D3B8494}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stream1", "Stream1\Stream1.csproj", "{5DCE96DB-5937-437C-9B1F-FA3353B310F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -173,6 +175,10 @@ Global
 		{ADB892E6-76D7-4DDC-89DF-D7752D3B8494}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADB892E6-76D7-4DDC-89DF-D7752D3B8494}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADB892E6-76D7-4DDC-89DF-D7752D3B8494}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DCE96DB-5937-437C-9B1F-FA3353B310F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DCE96DB-5937-437C-9B1F-FA3353B310F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DCE96DB-5937-437C-9B1F-FA3353B310F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DCE96DB-5937-437C-9B1F-FA3353B310F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
