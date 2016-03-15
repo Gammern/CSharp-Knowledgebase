@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE customer [
+  <!ENTITY tc "Top Customer">
+]>
+<customer id="123" status="archived">
+  <firstname>Jim</firstname>
+  <lastname>Bo</lastname>
+  <quote><![CDATA[C#'s operators include: < > &]]></quote>
+  <notes>Jim Bo is a &tc;</notes>
+  <!-- That wasn't so bad! -->
+</customer>
