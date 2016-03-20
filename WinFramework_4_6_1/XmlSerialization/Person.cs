@@ -10,10 +10,10 @@ namespace XmlSerialization
     // props/fields must be public in order to be serialized with XmlSerializer
     // XmlSerializer writes elements in the order that they’re defined in the class.
 
-    [XmlRoot("Person", Namespace = "http://mynamespace/test/2016/3")]
-    [XmlInclude(typeof(Student))]
-    [XmlInclude(typeof(Teacher))]
-    public class PersonType
+    [Serializable]
+    [XmlType(Namespace = "http://mynamespace/test/2016/3")]
+    [XmlRoot("Person", Namespace = "http://mynamespace/test/2016/3", IsNullable = false)]
+    public abstract class PersonType
     {
         [XmlAttribute]
         public int ID;
@@ -27,7 +27,13 @@ namespace XmlSerialization
         public override string ToString() => $"Name: {Name}, Age: {Age}";
     }
 
+    [Serializable]
+    [XmlRoot("Student", Namespace = "http://mynamespace/test/2016/3", IsNullable = false)]
+    [XmlType(Namespace = "http://mynamespace/test/2016/3")]
     public class Student : PersonType { };
+    [Serializable]
+    [XmlType(Namespace = "http://mynamespace/test/2016/3")]
+    [XmlRoot("Teacher", Namespace = "http://mynamespace/test/2016/3", IsNullable = false)]
     public class Teacher : PersonType { };
 
     public class Address

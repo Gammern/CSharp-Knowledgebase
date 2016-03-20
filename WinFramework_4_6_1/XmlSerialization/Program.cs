@@ -10,14 +10,15 @@ namespace XmlSerialization
 {
     class Program
     {
+        static Type[] subtypes = new Type[] {typeof(Student), typeof(Teacher) };
         static void Main(string[] args)
         {
-            PersonType p = new PersonType { Name = "Stacey", Age = 30, ID = 2, KeyData = new byte[] { 1, 2, 3, 4, 5 } };
+            PersonType t = new Teacher { Name = "Stacey", Age = 30, ID = 2, KeyData = new byte[] { 1, 2, 3, 4, 5 } };
             PersonType s = new Student { Name = "Stacey", Age = 30, ID = 2, KeyData = new byte[] { 1, 2, 3, 4, 5 }, HomeAddress = new Address { Street="Mystreet 5", PostCode="1234" } };
-            SerializePerson(p, "person.xml");
+            SerializePerson(t, "teacher.xml");
             SerializePerson(s, "student.xml");
 
-            PersonType p2 = DeserializePerson("person.xml");
+            PersonType p2 = DeserializePerson("teacher.xml");
             Console.WriteLine(p2);
         }
 
@@ -26,15 +27,15 @@ namespace XmlSerialization
             PersonType p2 = null;
             using (var s = File.OpenRead(path))
             {
-                var xs = new XmlSerializer(typeof(PersonType));
-                p2 = (PersonType)xs.Deserialize(s);
+                var xs = new XmlSerializer(typeof(PersonType),subtypes);
+                object o = xs.Deserialize(s);
             }
             return p2;
         }
 
         private static void SerializePerson(PersonType p, string path)
         {
-            var xs = new XmlSerializer(typeof(PersonType));
+            var xs = new XmlSerializer(p.GetType());
             using (var s = File.Create(path))
             {
                 xs.Serialize(s, p);
