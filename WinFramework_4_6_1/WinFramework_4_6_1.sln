@@ -79,6 +79,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlSerialization", "XmlSeri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reflection1", "Reflection1\Reflection1.csproj", "{9FF78412-D7D2-4539-B11D-590D28C15C07}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflEmit1", "ReflEmit1\ReflEmit1.csproj", "{35BBB819-3236-4FCE-9C5F-6ADE3197CD42}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -217,6 +219,10 @@ Global
 		{9FF78412-D7D2-4539-B11D-590D28C15C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FF78412-D7D2-4539-B11D-590D28C15C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FF78412-D7D2-4539-B11D-590D28C15C07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35BBB819-3236-4FCE-9C5F-6ADE3197CD42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35BBB819-3236-4FCE-9C5F-6ADE3197CD42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35BBB819-3236-4FCE-9C5F-6ADE3197CD42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35BBB819-3236-4FCE-9C5F-6ADE3197CD42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
