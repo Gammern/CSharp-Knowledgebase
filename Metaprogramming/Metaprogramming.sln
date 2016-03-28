@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToStringReflecttion", "ToSt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuckTyping1", "DuckTyping1\DuckTyping1.csproj", "{D8F54379-3015-450D-8D71-861C2B8EB004}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T4Compare1", "T4Compare1\T4Compare1.csproj", "{AC001EC8-EE28-43E8-88CF-247D7F09E9B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D8F54379-3015-450D-8D71-861C2B8EB004}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8F54379-3015-450D-8D71-861C2B8EB004}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8F54379-3015-450D-8D71-861C2B8EB004}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC001EC8-EE28-43E8-88CF-247D7F09E9B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC001EC8-EE28-43E8-88CF-247D7F09E9B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC001EC8-EE28-43E8-88CF-247D7F09E9B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC001EC8-EE28-43E8-88CF-247D7F09E9B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
