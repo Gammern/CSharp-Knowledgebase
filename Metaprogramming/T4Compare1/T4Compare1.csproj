@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="genericgreater.cs" />
     <Compile Include="greater.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -55,9 +56,27 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BasicIndentation.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BasicIndentation.txt</LastGenOutput>
+    </Content>
+    <Content Include="BasicIndentation.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BasicIndentation.tt</DependentUpon>
+    </Content>
     <Content Include="greater.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>greater.cs</LastGenOutput>
+    </Content>
+    <Content Include="TemplateClassDiscovery.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TemplateClassDiscovery.txt</LastGenOutput>
+    </Content>
+    <Content Include="TemplateClassDiscovery.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TemplateClassDiscovery.tt</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>

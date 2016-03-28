@@ -4,9 +4,17 @@
 <#@ import namespace="System.Linq" #>
 using System;
 
+// This code is generated!! Do not change bla bla bla..
+
+namespace T4Compare1.T4
+{
+<# 
+PushIndent("\t"); 
+#>
 public static class greater
 {
-<#
+<# // --------------------------- code -----------------------------------
+PushIndent("\t"); 
 Type[] types_to_generate = new[]
 {
 	typeof(object),  typeof(bool),    typeof(byte),
@@ -25,24 +33,26 @@ foreach (var type in types_to_generate)
 		.FirstOrDefault();
 	if (icomparable != null)
 	{
-#>
-	public static <#= type.Name #> of(<#= type.Name #> left, <#= type.Name #> right)
-	{
-		return left.CompareTo(right) < 0 ? right : left;
-	}
-<#
+// --------------------------- end code ----------------------------------- #>
+public static <#= type.Name #> of(<#= type.Name #> left, <#= type.Name #> right)
+{
+	return left.CompareTo(right) < 0 ? right : left;
+}
+<# // --------------------------- code -----------------------------------
 	}
 	else
 	{
-#>
-	[Obsolete("Calling this method will throw an exception")]
-	public static <#= type.Name #> of(<#= type.Name #> left, <#= type.Name #> right)
-	{
-		throw new ApplicationException(
-			"Type <#= type.Name #> must implement one of the IComparable or IComparable<<#= type.Name #>> interfaces.");
-	}
-<#
+// --------------------------- end code ----------------------------------- #>
+[Obsolete("Calling this method will throw an exception")]
+public static <#= type.Name #> of(<#= type.Name #> left, <#= type.Name #> right)
+{
+	throw new ApplicationException(
+		"Type <#= type.Name #> must implement one of the IComparable or IComparable<<#= type.Name #>> interfaces.");
+}
+<# // --------------------------- code -----------------------------------
 	} // else
 } // foreach
-#>
+ClearIndent();
+// --------------------------- end code ----------------------------------- #>
+	}
 }
