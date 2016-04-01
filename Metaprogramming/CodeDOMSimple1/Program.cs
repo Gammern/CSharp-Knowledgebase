@@ -11,6 +11,15 @@ namespace CodeDOMSimple1
 
         static void Main(string[] args)
         {
+            foreach (CompilerInfo ci in CodeDomProvider.GetAllCompilerInfo())
+            {
+                foreach (string lang in ci.GetLanguages())
+                {
+                    Console.Write($"{lang} \t");
+                }
+                Console.WriteLine();
+            }
+
             CodeNamespace progNamespace = HelloWorldCodeDOM.BuildProgram();
             var compilerOptions = new CodeGeneratorOptions
             {
