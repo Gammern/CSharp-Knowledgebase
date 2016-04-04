@@ -34,7 +34,7 @@ namespace CodeProvider1
             var providerOptions = new Dictionary<string, string> { ["CompilerVersion"] = "v4.0" };
             //var csProvider = new CSharpCodeProvider(providerOptions);
             CSharpCodeProvider csProvider = (CSharpCodeProvider)CodeDomProvider.CreateProvider("C#", providerOptions);
-            var csParser = csProvider.CreateParser(); // null, Not supported
+            //var csParser = csProvider.CreateParser(); // null, Not supported
 
             var compilerParameters = new CompilerParameters(new string[] { });
             CompilerResults results = csProvider.CompileAssemblyFromSource(compilerParameters, source);

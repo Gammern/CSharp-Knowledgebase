@@ -6,7 +6,7 @@ namespace T4Compare1.T4
 {
 	public static class greater
 	{
-		[Obsolete("Calling this method will throw an exception")]
+		//[Obsolete("Calling this method will throw an exception")]
 		public static Object of(Object left, Object right)
 		{
 			throw new ApplicationException(
