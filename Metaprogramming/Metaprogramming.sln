@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeDomSimple2", "CodeDomSi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyIntegers", "LazyIntegers\LazyIntegers.csproj", "{A821CF4F-5D57-4D7A-8ABA-DFD271538F2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expression2", "Expression2\Expression2.csproj", "{57613D1C-E8D3-43AA-A756-1C0325A118FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +103,14 @@ Global
 		{A821CF4F-5D57-4D7A-8ABA-DFD271538F2D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A821CF4F-5D57-4D7A-8ABA-DFD271538F2D}.Release|x64.ActiveCfg = Release|x64
 		{A821CF4F-5D57-4D7A-8ABA-DFD271538F2D}.Release|x64.Build.0 = Release|x64
+		{57613D1C-E8D3-43AA-A756-1C0325A118FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57613D1C-E8D3-43AA-A756-1C0325A118FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57613D1C-E8D3-43AA-A756-1C0325A118FC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{57613D1C-E8D3-43AA-A756-1C0325A118FC}.Debug|x64.Build.0 = Debug|Any CPU
+		{57613D1C-E8D3-43AA-A756-1C0325A118FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57613D1C-E8D3-43AA-A756-1C0325A118FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57613D1C-E8D3-43AA-A756-1C0325A118FC}.Release|x64.ActiveCfg = Release|Any CPU
+		{57613D1C-E8D3-43AA-A756-1C0325A118FC}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
