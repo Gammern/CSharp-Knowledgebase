@@ -82,6 +82,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflEmit1", "ReflEmit1\ReflEmit1.csproj", "{35BBB819-3236-4FCE-9C5F-6ADE3197CD42}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SchemaObjectModel", "SchemaObjectModel", "{D13F1218-01C9-4544-BCBB-F06ED7052318}"
+	ProjectSection(SolutionItems) = preProject
+		Working with XML Schemas.url = Working with XML Schemas.url
+		XML Schema Object Model Overview.url = XML Schema Object Model Overview.url
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadXsdFile", "ReadXsdFile\ReadXsdFile.csproj", "{777385C3-CFE0-4CA6-8D01-03C4159D6525}"
 EndProject
