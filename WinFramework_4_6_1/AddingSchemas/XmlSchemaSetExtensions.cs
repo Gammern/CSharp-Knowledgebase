@@ -32,7 +32,7 @@ namespace AddingSchemas
             @this.XsdAdd(Path.Combine(commonPath, "UBL-CommonAggregateComponents-2.1.xsd"), settings, validationEventHandler);
             @this.XsdAdd(Path.Combine(commonPath, "UBL-CommonExtensionComponents-2.1.xsd"), settings, validationEventHandler);
             //@this.XsdAdd(Path.Combine(commonPath, "UBL-ExtensionContentDataType-2.1.xsd"), settings, validationEventHandler);
-            @this.XsdAdd(Path.Combine(commonPath, "UBL-CoreComponentParameters-2.1.xsd"), settings, validationEventHandler);
+            //@this.XsdAdd(Path.Combine(commonPath, "UBL-CoreComponentParameters-2.1.xsd"), settings, validationEventHandler);
 
 
             DirectoryInfo dirInfo = new DirectoryInfo(maindocPath);
@@ -41,13 +41,10 @@ namespace AddingSchemas
                 @this.XsdAdd( xsdFile.FullName, settings, validationEventHandler);
             }
 
-            var files = Directory.GetFiles(commonPath, "*.xsd").Select(f => Path.GetFileName(f)).ToList();
-            foreach (XmlSchema schema in @this.Schemas())
-            {
-                string fn = Path.GetFileName(schema.SourceUri);
-                files.Remove(fn);
-            }
-            files.ForEach(f => Console.WriteLine($"Not included: {f}"));
+            var commonFiles = Directory.GetFiles(commonPath, "*.xsd").Select(f => Path.GetFileName(f)).ToList();
+            var addedFiles = @this.Schemas().Cast<XmlSchema>().Select(s => Path.GetFileName(s.SourceUri)).ToList();
+            var missedFiles = commonFiles.Except(addedFiles).ToList();
+            missedFiles.ForEach(f => Console.WriteLine($"Not included: {f}"));
         }
 
         private static void XsdAdd(this XmlSchemaSet @this, string filename, XmlReaderSettings settings, ValidationEventHandler validationEventHandler)

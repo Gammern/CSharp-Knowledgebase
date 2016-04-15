@@ -97,6 +97,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditXsd", "EditXsd\EditXsd.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddingSchemas", "AddingSchemas\AddingSchemas.csproj", "{34E91FFF-5408-4ACE-8FD5-C1BA0F68B413}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostSchemaTypes", "PostSchemaTypes\PostSchemaTypes.csproj", "{A2094037-3F28-48A7-AA3F-CB5B09100FBA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -259,6 +261,10 @@ Global
 		{34E91FFF-5408-4ACE-8FD5-C1BA0F68B413}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34E91FFF-5408-4ACE-8FD5-C1BA0F68B413}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34E91FFF-5408-4ACE-8FD5-C1BA0F68B413}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2094037-3F28-48A7-AA3F-CB5B09100FBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2094037-3F28-48A7-AA3F-CB5B09100FBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2094037-3F28-48A7-AA3F-CB5B09100FBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2094037-3F28-48A7-AA3F-CB5B09100FBA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -281,5 +287,6 @@ Global
 		{04DBB2B2-CF80-402D-B9D9-DB420E9D0E14} = {D13F1218-01C9-4544-BCBB-F06ED7052318}
 		{E86C8986-E9DE-401D-B0FD-42B75CC31E06} = {D13F1218-01C9-4544-BCBB-F06ED7052318}
 		{34E91FFF-5408-4ACE-8FD5-C1BA0F68B413} = {D13F1218-01C9-4544-BCBB-F06ED7052318}
+		{A2094037-3F28-48A7-AA3F-CB5B09100FBA} = {D13F1218-01C9-4544-BCBB-F06ED7052318}
 	EndGlobalSection
 EndGlobal
