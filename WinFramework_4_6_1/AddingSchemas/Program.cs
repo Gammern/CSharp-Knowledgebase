@@ -13,26 +13,25 @@ namespace AddingSchemas
     {
         static void Main(string[] args)
         {
-            string path = args[0];
-            if (!Directory.Exists(path))
-            {
-                path = @"C:\Users\johan\Documents\ubl\UBL-2.1\xsd\maindoc";
-            }
+            // download and unzip http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.zip
+            string ublBasePath = "C:/Users/johan/Documents/ubl/UBL-2.1/xsd";
 
-            XmlSchemaSet maindocSchemaSet = new XmlSchemaSet(new NameTable());
-            maindocSchemaSet.ValidationEventHandler += MaindocSchemaSet_ValidationEventHandler;
 
-            maindocSchemaSet.AddFilesFromDirectory(path, MaindocSchemaSet_ValidationEventHandler);
+            XmlNameTable nt = new NameTable();
+            XmlSchemaSet schemaSet = new XmlSchemaSet(nt);
+            schemaSet.ValidationEventHandler += MaindocSchemaSet_ValidationEventHandler;
+            schemaSet.AddFilesFromDirectory(ublBasePath, MaindocSchemaSet_ValidationEventHandler);
 
             Console.WriteLine("Compiling ...");
-            maindocSchemaSet.Compile();
+            schemaSet.Compile();
 
             using (var writer = File.CreateText("result.txt"))
             {
-                foreach (XmlSchema schema in maindocSchemaSet.Schemas())
+                int len = schemaSet.Schemas().Cast<XmlSchema>().First().SourceUri.IndexOf("/xsd/") + 5;
+                foreach (XmlSchema schema in schemaSet.Schemas())
                 {
-                    //Console.WriteLine(schema.TargetNamespace);
-                    writer.WriteLine(schema.TargetNamespace);
+                    string s = $"{schema.SourceUri.Remove(0, len)}\t {schema.TargetNamespace}";
+                    writer.WriteLine(s);
                 }
             }
 

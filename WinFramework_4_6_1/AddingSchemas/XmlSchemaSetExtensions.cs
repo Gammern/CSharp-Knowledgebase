@@ -5,43 +5,57 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Resolvers;
 using System.Xml.Schema;
 
 namespace AddingSchemas
 {
     public static class XmlSchemaSetExtensions
     {
-        public static void AddFilesFromDirectory(this XmlSchemaSet @this, string path, ValidationEventHandler validationEventHandler)
+        public static void AddFilesFromDirectory(this XmlSchemaSet @this, string ublBasePath, ValidationEventHandler validationEventHandler)
         {
-            DirectoryInfo dirInfo = new DirectoryInfo(path);
+            string maindocPath = Path.Combine(ublBasePath, "maindoc");
+            string commonPath = Path.Combine(ublBasePath, "common");
             XmlReaderSettings settings = new XmlReaderSettings
             {
                 ValidationType = ValidationType.Schema,
                 ValidationFlags = XmlSchemaValidationFlags.ProcessInlineSchema,
                 DtdProcessing = DtdProcessing.Parse,
-                NameTable = @this.NameTable
+                NameTable = @this.NameTable,
+                XmlResolver = new XmlPreloadedResolver(new XmlUrlResolver())
             };
 
-            // For some reason unknow, need to add this file first
-            using (var reader = XmlReader.Create(@"C:\Users\johan\Documents\ubl\UBL-2.1\xsd\common\UBL-xmldsig-core-schema-2.1.xsd", settings))
-            {
-                Console.WriteLine($"Processing: {Path.GetFileName(reader.BaseURI)} (PRE-LOAD)");
-                XmlSchema schema = XmlSchema.Read(reader, validationEventHandler);
-                @this.Add(schema);
-                //@this.Compile();
-            }
 
+            // For some reason unknow, need to add/load this file first
+            // Can I somhow pre-parse the files and find out the correct load order? 
+            @this.XsdAdd(Path.Combine(commonPath, "UBL-xmldsig-core-schema-2.1.xsd"), settings, validationEventHandler);
+            @this.XsdAdd(Path.Combine(commonPath, "UBL-CommonAggregateComponents-2.1.xsd"), settings, validationEventHandler);
+            @this.XsdAdd(Path.Combine(commonPath, "UBL-CommonExtensionComponents-2.1.xsd"), settings, validationEventHandler);
+            //@this.XsdAdd(Path.Combine(commonPath, "UBL-ExtensionContentDataType-2.1.xsd"), settings, validationEventHandler);
+            @this.XsdAdd(Path.Combine(commonPath, "UBL-CoreComponentParameters-2.1.xsd"), settings, validationEventHandler);
+
+
+            DirectoryInfo dirInfo = new DirectoryInfo(maindocPath);
             foreach (var xsdFile in dirInfo.GetFiles("*.xsd"))
             {
-                using (var reader = XmlReader.Create(xsdFile.FullName, settings))
-                {
-                    Console.WriteLine($"Processing: {xsdFile.Name}");
-                    // Message = "For security reasons DTD is prohibited in this XML document. 
-                    // To enable DTD processing set the DtdProcessing property on XmlReaderSettings to Parse and pass the settings into XmlReader.Create method."
-                    XmlSchema schema = XmlSchema.Read(reader, validationEventHandler);
-                    @this.Add(schema);
-                }
-                //Console.WriteLine(xsdFile.Name);
+                @this.XsdAdd( xsdFile.FullName, settings, validationEventHandler);
+            }
+
+            var files = Directory.GetFiles(commonPath, "*.xsd").Select(f => Path.GetFileName(f)).ToList();
+            foreach (XmlSchema schema in @this.Schemas())
+            {
+                string fn = Path.GetFileName(schema.SourceUri);
+                files.Remove(fn);
+            }
+            files.ForEach(f => Console.WriteLine($"Not included: {f}"));
+        }
+
+        private static void XsdAdd(this XmlSchemaSet @this, string filename, XmlReaderSettings settings, ValidationEventHandler validationEventHandler)
+        {
+            using (var reader = XmlReader.Create(filename, settings))
+            {
+                XmlSchema schema = XmlSchema.Read(reader, validationEventHandler);
+                @this.Add(schema);
             }
         }
     }
