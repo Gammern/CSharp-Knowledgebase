@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -19,21 +21,13 @@ namespace AddingSchemas
             XmlReaderSettings settings = new XmlReaderSettings
             {
                 ValidationType = ValidationType.Schema,
-                ValidationFlags = XmlSchemaValidationFlags.ProcessInlineSchema,
-                DtdProcessing = DtdProcessing.Parse,
+                DtdProcessing = DtdProcessing.Parse, // will crash woithout this
                 NameTable = @this.NameTable,
-                XmlResolver = new XmlPreloadedResolver(new XmlUrlResolver())
             };
 
 
             // For some reason unknow, need to add/load this file first
-            // Can I somhow pre-parse the files and find out the correct load order? 
-            @this.XsdAdd(Path.Combine(commonPath, "UBL-xmldsig-core-schema-2.1.xsd"), settings, validationEventHandler);
-            @this.XsdAdd(Path.Combine(commonPath, "UBL-CommonAggregateComponents-2.1.xsd"), settings, validationEventHandler);
-            @this.XsdAdd(Path.Combine(commonPath, "UBL-CommonExtensionComponents-2.1.xsd"), settings, validationEventHandler);
-            //@this.XsdAdd(Path.Combine(commonPath, "UBL-ExtensionContentDataType-2.1.xsd"), settings, validationEventHandler);
-            //@this.XsdAdd(Path.Combine(commonPath, "UBL-CoreComponentParameters-2.1.xsd"), settings, validationEventHandler);
-
+            @this.XsdAdd(Path.Combine(commonPath, "UBL-xmldsig-core-schema-2.1.xsd"), settings, validationEventHandler); // Must be preloaded!
 
             DirectoryInfo dirInfo = new DirectoryInfo(maindocPath);
             foreach (var xsdFile in dirInfo.GetFiles("*.xsd"))
@@ -41,10 +35,6 @@ namespace AddingSchemas
                 @this.XsdAdd( xsdFile.FullName, settings, validationEventHandler);
             }
 
-            var commonFiles = Directory.GetFiles(commonPath, "*.xsd").Select(f => Path.GetFileName(f)).ToList();
-            var addedFiles = @this.Schemas().Cast<XmlSchema>().Select(s => Path.GetFileName(s.SourceUri)).ToList();
-            var missedFiles = commonFiles.Except(addedFiles).ToList();
-            missedFiles.ForEach(f => Console.WriteLine($"Not included: {f}"));
         }
 
         private static void XsdAdd(this XmlSchemaSet @this, string filename, XmlReaderSettings settings, ValidationEventHandler validationEventHandler)
@@ -52,8 +42,37 @@ namespace AddingSchemas
             using (var reader = XmlReader.Create(filename, settings))
             {
                 XmlSchema schema = XmlSchema.Read(reader, validationEventHandler);
-                @this.Add(schema);
+                var ret = @this.Add(schema);
+                if (ret == null)
+                {
+                    Console.WriteLine($"Error adding schema {filename}");
+                }
             }
+        }
+
+        public static List<string> GetFilesNotLoaded(this XmlSchemaSet @this, string ublBasePath)
+        {
+            string maindocPath = Path.Combine(ublBasePath, "maindoc");
+            string commonPath = Path.Combine(ublBasePath, "common");
+            var xsdFiles = Directory.GetFiles(commonPath, "*.xsd").Union(Directory.GetFiles(maindocPath, "*.xsd")).Select(f => Path.GetFileName(f)).ToList();
+            var addedFiles = @this.Schemas().Cast<XmlSchema>().Select(s => Path.GetFileName(s.SourceUri)).ToList();
+            return xsdFiles.Except(addedFiles).ToList();
+        }
+
+        // use to build XmlSerializerNamespaces for the serializer
+        public static XmlQualifiedName[] GetNamespacePrefixes(this XmlSchemaSet @this)
+        {
+            List<XmlQualifiedName> nsList = new List<XmlQualifiedName>();
+            foreach (XmlSchema schema in @this.Schemas())
+            {
+                nsList.AddRange(schema.Namespaces.ToArray().Where(ns => !string.IsNullOrEmpty(ns.Name)));
+            }
+            return nsList.Distinct().ToArray();
+        }
+
+        public static ICollection<XmlSchema> MaindocSchemas(this XmlSchemaSet @this)
+        {
+            return @this.Schemas().Cast<XmlSchema>().Where(s => s.SourceUri.Contains("maindoc") && s.TargetNamespace.StartsWith("urn:oasis:names:specification:ubl:schema:xsd:")).ToList();
         }
     }
 }
