@@ -32,7 +32,7 @@ namespace AddingSchemas
             DirectoryInfo dirInfo = new DirectoryInfo(maindocPath);
             foreach (var xsdFile in dirInfo.GetFiles("*.xsd"))
             {
-                @this.XsdAdd( xsdFile.FullName, settings, validationEventHandler);
+                @this.XsdAdd(xsdFile.FullName, settings, validationEventHandler);
             }
 
         }
@@ -73,6 +73,23 @@ namespace AddingSchemas
         public static ICollection<XmlSchema> MaindocSchemas(this XmlSchemaSet @this)
         {
             return @this.Schemas().Cast<XmlSchema>().Where(s => s.SourceUri.Contains("maindoc") && s.TargetNamespace.StartsWith("urn:oasis:names:specification:ubl:schema:xsd:")).ToList();
+        }
+
+        /// <summary>
+        /// Returns a list of shared elements that exists in all main documents, and at the same ordered position.
+        /// Use it to construct a base class that all code generated common documents classes could inherit from
+        /// </summary>
+        /// <param name="this">Ellements shared by all common documents suitable for a base class</param>
+        /// <returns></returns>
+        public static ICollection<XmlSchemaElement> MaindocCommonElements(this XmlSchemaSet @this)
+        {
+            var res = @this.MaindocSchemas()
+                .Select(s => s.Items.OfType<XmlSchemaComplexType>().First())
+                .Select(c => (c.ContentTypeParticle as XmlSchemaSequence).Items.Cast<XmlSchemaElement>().ToArray())
+                .OrderBy(c => c.Length)
+                .Aggregate((acc, next) => acc.AsEnumerable().TakeWhile((s, i) => s.QualifiedName == next[i].QualifiedName).ToArray())
+                .ToList();
+            return res;
         }
     }
 }

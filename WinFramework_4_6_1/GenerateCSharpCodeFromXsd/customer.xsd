@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.tempuri.org" targetNamespace="http://www.tempuri.org" xmlns:xs="http://www.w3.org/2001/XMLSchema" code:fieldsToProperties="true" xmlns:code="http://code">
+  <xs:annotation>
+    <xs:appinfo>
+      <code:Code xmlns="http://code">
+        <Extension Type="XsdGenerator.Extensions.FieldsToPropertiesExtension, XsdGenerator.CustomTool" />
+      </code:Code>
+      <code:Code xmlns="http://code">
+        <Extension Type="XsdGenerator.Extensions.FieldsToPropertiesExtension, XsdGenerator.CustomTool" />
+      </code:Code>
+    </xs:appinfo>
+  </xs:annotation>
+  
+  <xs:element name="Customer" type="tns:CustomerType"/>
+  <xs:element name="Driver" type="tns:DriverType"/>
+  <xs:element name="MapReader" type="tns:MapReaderType"/>
+  
+  <xs:complexType name="CustomerType">
+    <xs:sequence>
+      <xs:element name="FirstName" type="xs:string" />
+      <xs:element name="LastName" type="tns:LastNameType" />
+    </xs:sequence>
+    <xs:attribute name="CustomerId" type="xs:positiveInteger" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="DriverType">
+    <xs:complexContent>
+      <xs:extension base="tns:CustomerType">
+        <xs:sequence>
+          <xs:element name="Car" type="tns:CarType"/>
+          <xs:element name="PlateNumber" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="MapReaderType">
+    <xs:complexContent>
+      <xs:extension base="tns:CustomerType">
+        <xs:sequence>
+          <xs:element name="Car" type="tns:CarType"/>
+          <xs:element name="PlateNumber" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="LastNameType">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="CarType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Audi" />
+      <xs:enumeration value="Golf" />
+      <xs:enumeration value="BMW" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

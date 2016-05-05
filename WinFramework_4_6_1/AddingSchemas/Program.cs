@@ -29,19 +29,14 @@ namespace AddingSchemas
             // show namespaces and prefix
             // schemaSet.GetNamespacePrefixes().ToList().ForEach(ns => Console.WriteLine($"{ns.Name}\t {ns.Namespace}"));
 
-            var comparer = new XmlSchemaElementComparer();
-            var props = schemaSet.MaindocSchemas()
-                    .Select(s => s.Items)
-                    .SelectMany(o => o.OfType<XmlSchemaComplexType>())
-                    .Select(c => (c.ContentTypeParticle as XmlSchemaSequence).Items.Cast<XmlSchemaElement>())
-                    .ToList();
-            var commonProps = props.Skip(1).Aggregate(
-                new HashSet<XmlSchemaElement>(props.First(), comparer), (h, e) => { h.IntersectWith(e); return h; }).ToList();
+            var commonProps = schemaSet.MaindocCommonElements();
 
             foreach (var item in commonProps)
             {
                 Console.WriteLine(item.QualifiedName.Name);
             }
+
+            schemaSet.MaindocCommonElements();
 
             using (var writer = File.CreateText("result.txt"))
             {
@@ -51,7 +46,7 @@ namespace AddingSchemas
                     string s = $"{schema.SourceUri.Remove(0, len)}\t {schema.TargetNamespace}";
                     writer.WriteLine(s);
                 }
-                Console.WriteLine("\nCommon properties:");
+                writer.WriteLine(Environment.NewLine + "Common properties:");
                 foreach (var p in commonProps)
                 {
                     writer.WriteLine(p.QualifiedName.Name);
