@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema id="mystatus"
+    targetNamespace="http://tempuri.org/mystatus.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/mystatus.xsd"
+            xmlns:cbc="http://tempuri.org/myderived.xsd"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+>
+  <xsd:import namespace="http://tempuri.org/myderived.xsd" schemaLocation="myderived.xsd"/>
+  <xsd:element name="Status" type="StatusType"/>
+  <xsd:complexType name="StatusType">
+    <xsd:sequence>
+      <xsd:element ref="cbc:Text" minOccurs="0" maxOccurs="1">
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+</xsd:schema>
