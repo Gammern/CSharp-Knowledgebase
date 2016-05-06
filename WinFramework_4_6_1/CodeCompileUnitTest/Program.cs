@@ -20,18 +20,17 @@ namespace CodeCompileUnitTest
             CodeNamespace globalNs = new CodeNamespace();
             ccu.Namespaces.Add(globalNs);
             var schemaSet = new XmlSchemaSet();
-            var schema = schemaSet.Add(null, "myderived.xsd");
-            schemaSet.Compile();
+            var mybaseSchema = new XmlSchema().Create("mybase.xsd");
+            var myderivedSchema = new XmlSchema().Create("myderived.xsd");
+
             var schemas = new XmlSchemas();
-            foreach (XmlSchema s in schemaSet.Schemas())
-            {
-                schemas.Add(s);
-            }
+            schemas.AddReference(mybaseSchema);
+            schemas.Add(myderivedSchema);
             schemas.Compile(ValidationEventHandler, true);
 
             XmlSchemaImporter importer = new XmlSchemaImporter(schemas);
             XmlCodeExporter exporter = new XmlCodeExporter(globalNs, null, CodeGenerationOptions.GenerateOrder);
-            foreach (XmlSchemaElement element in schema.Elements.Values)
+            foreach (XmlSchemaElement element in myderivedSchema.Elements.Values)
             {
                 XmlTypeMapping mapping = importer.ImportTypeMapping(element.QualifiedName);
                 exporter.ExportTypeMapping(mapping);
