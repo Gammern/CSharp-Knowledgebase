@@ -55,7 +55,7 @@ namespace CodeCompileUnitTest
             //    exporter.ExportTypeMapping(mapping);
             //}
 
-            using (StreamWriter writer = File.CreateText("status.cs"))
+            using (StreamWriter writer = File.CreateText(@"..\..\status.cs"))
             {
                 globalNs.Comments.Clear();
                 provider.GenerateCodeFromCompileUnit(ccu, writer, new CodeGeneratorOptions { BracingStyle = "C", BlankLinesBetweenMembers = false });
