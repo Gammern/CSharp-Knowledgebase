@@ -11,6 +11,7 @@
   <xsd:complexType name="TextType">
     <xsd:simpleContent>
       <xsd:extension base="udt:TextType"/>
+      <!--<xsd:restriction base="udt:TextType"/>-->
     </xsd:simpleContent>
   </xsd:complexType>
 
