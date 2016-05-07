@@ -18,16 +18,20 @@ namespace CodeCompileUnitTest
         static void Main(string[] args)
         {
             CodeCompileUnit ccu = new CodeCompileUnit();
-            CodeNamespace globalNs = new CodeNamespace();
-            ccu.Namespaces.Add(globalNs);
+
+            ccu.ReferencedAssemblies.AddRange(new []{ "System", "System.Xml.Serialization" });
+            //CodeNamespace globalNs = new CodeNamespace();
+            //ccu.Namespaces.Add(globalNs);
             var schemaSet = new XmlSchemaSet();
             var mybaseSchema = XmlSchemaExtensions.Create("mybase.xsd");
             var myderivedSchema = XmlSchemaExtensions.Create("myderived.xsd");
             var mystatusSchema = XmlSchemaExtensions.Create("mystatus.xsd");
 
+            var xmlSysImport = new CodeNamespaceImport("System");
+            var xmlNsImport = new CodeNamespaceImport("System.Xml.Serialization");
             var mybaseNs = new CodeNamespace("MyBase");
-            var myDerivedNs = new CodeNamespace("MyDerived") { Imports = { new CodeNamespaceImport(mybaseNs.Name) } };
-            var myStatusNs = new CodeNamespace("MyStatus") { Imports = { new CodeNamespaceImport(myDerivedNs.Name) } };
+            var myDerivedNs = new CodeNamespace("MyDerived") { Imports = { xmlSysImport, xmlNsImport, new CodeNamespaceImport(mybaseNs.Name)} };
+            var myStatusNs = new CodeNamespace("MyStatus") { Imports = { xmlSysImport, xmlNsImport, new CodeNamespaceImport(myDerivedNs.Name) } };
             ccu.Namespaces.AddRange(new [] { mybaseNs, myDerivedNs, myStatusNs});            
 
             var schemas = new XmlSchemas();
@@ -42,6 +46,8 @@ namespace CodeCompileUnitTest
             var providerOptions = new Dictionary<string, string>();
             var provider = new CSharpCodeProvider(providerOptions);
             XmlSchemaImporter importer = new XmlSchemaImporter(schemas, options, provider, context); // for xml schemas
+            importer.Extensions.Clear();
+            importer.Extensions.Add(new MyImporterExtension());
             Hashtable mappings = new Hashtable();
 
             MapTypes(mybaseSchema, importer, mybaseNs, ccu, provider, options, mappings);
@@ -57,7 +63,8 @@ namespace CodeCompileUnitTest
 
             using (StreamWriter writer = File.CreateText(@"..\..\status.cs"))
             {
-                globalNs.Comments.Clear();
+                //globalNs.Comments.Clear();
+                //globalNs.Name = "MyGlobal";
                 provider.GenerateCodeFromCompileUnit(ccu, writer, new CodeGeneratorOptions { BracingStyle = "C", BlankLinesBetweenMembers = false });
             }
             Console.WriteLine("Press enter");

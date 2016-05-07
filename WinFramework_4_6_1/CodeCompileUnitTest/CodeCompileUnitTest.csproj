@@ -43,9 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MyImporterExtension.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="status.cs" />
+    <Compile Include="status.cs" />
     <Compile Include="XmlSchemaExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
