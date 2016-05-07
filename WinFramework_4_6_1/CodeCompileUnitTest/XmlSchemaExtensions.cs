@@ -10,12 +10,14 @@ namespace CodeCompileUnitTest
 {
     public static class XmlSchemaExtensions
     {
-        public static XmlSchema Create(this XmlSchema @this, string filename)
+        public static XmlSchema Create(string filename)
         {
             using (var fs = File.OpenRead(filename))
             {
                 return XmlSchema.Read(fs, null);
             }
-        } 
+        }
+
+        
     }
 }
