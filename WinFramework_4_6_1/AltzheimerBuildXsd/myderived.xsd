@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://tempuri.org/myderived.xsd" xmlns:udt="http://tempuri.org/mybase.xsd" elementFormDefault="qualified" targetNamespace="http://tempuri.org/myderived.xsd" id="myderived" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="mybase.xsd" namespace="http://tempuri.org/mybase.xsd" />
+  <xsd:element name="Text" type="TextType" />
+  <xsd:complexType name="TextType">
+    <xsd:simpleContent>
+      <xsd:extension base="udt:TextType" />
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>

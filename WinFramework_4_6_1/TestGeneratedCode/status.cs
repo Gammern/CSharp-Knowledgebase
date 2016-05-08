@@ -17,21 +17,17 @@ namespace MyDerived
     using System;
     using System.Xml.Serialization;
     using MyBase;
-
-#if OPT
+    
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("CodeCompileUnitTest", "1.0.0.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(TypeName="TextType", Namespace="http://tempuri.org/myderived.xsd")]
-    [XmlRoot("Text", Namespace="http://tempuri.org/myderived.xsd", IsNullable=false)]
+    [System.Xml.Serialization.XmlRootAttribute("Text", Namespace="http://tempuri.org/myderived.xsd", IsNullable=false)]
     public partial class TextType1 : TextType
     {
     }
-#else
-    using TextType1 = TextType;
-#endif
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TextType1))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("CodeCompileUnitTest", "1.0.0.0")]
@@ -54,8 +50,7 @@ namespace MyStatus
     using System;
     using System.Xml.Serialization;
     using MyDerived;
-    using TextType1 = MyDerived.TextType;
-
+    
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("CodeCompileUnitTest", "1.0.0.0")]
     [System.SerializableAttribute()]
@@ -69,4 +64,5 @@ namespace MyStatus
         [System.Xml.Serialization.XmlElementAttribute(Namespace="http://tempuri.org/myderived.xsd", Order=0)]
         public TextType1 Text;
     }
+
 }

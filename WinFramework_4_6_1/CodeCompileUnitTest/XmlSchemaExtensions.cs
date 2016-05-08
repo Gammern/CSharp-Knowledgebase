@@ -12,7 +12,7 @@ namespace CodeCompileUnitTest
     {
         public static XmlSchema Create(string filename)
         {
-            using (var fs = File.OpenRead(filename))
+            using (var fs = File.OpenRead(Path.Combine("xsd", filename)))
             {
                 return XmlSchema.Read(fs, null);
             }

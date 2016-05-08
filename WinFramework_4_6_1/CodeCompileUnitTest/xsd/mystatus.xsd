@@ -3,9 +3,8 @@
     targetNamespace="http://tempuri.org/mystatus.xsd"
     elementFormDefault="qualified"
     xmlns="http://tempuri.org/mystatus.xsd"
-            xmlns:cbc="http://tempuri.org/myderived.xsd"
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
->
+    xmlns:cbc="http://tempuri.org/myderived.xsd"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:import namespace="http://tempuri.org/myderived.xsd" schemaLocation="myderived.xsd"/>
   <xsd:element name="Status" type="StatusType"/>
   <xsd:complexType name="StatusType">
@@ -14,5 +13,4 @@
       </xsd:element>
     </xsd:sequence>
   </xsd:complexType>
-
 </xsd:schema>

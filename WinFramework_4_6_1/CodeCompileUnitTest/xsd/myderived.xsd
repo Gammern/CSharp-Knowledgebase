@@ -3,9 +3,8 @@
     targetNamespace="http://tempuri.org/myderived.xsd"
     elementFormDefault="qualified"
     xmlns="http://tempuri.org/myderived.xsd"
-            xmlns:udt="http://tempuri.org/mybase.xsd"
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
->
+    xmlns:udt="http://tempuri.org/mybase.xsd"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:import namespace="http://tempuri.org/mybase.xsd" schemaLocation="mybase.xsd"/>
   <xsd:element name="Text" type="TextType"/>
   <xsd:complexType name="TextType">
@@ -14,5 +13,12 @@
       <!--<xsd:restriction base="udt:TextType"/>-->
     </xsd:simpleContent>
   </xsd:complexType>
-
 </xsd:schema>
+
+<!--
+<XmlSchemaComplexType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TextType">
+  <simpleContent>
+    <extension xmlns:q1="http://tempuri.org/mybase.xsd" base="q1:TextType" />
+  </simpleContent>
+</XmlSchemaComplexType>
+-->
