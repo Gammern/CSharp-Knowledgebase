@@ -113,6 +113,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestGeneratedCode", "TestGe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AltzheimerBuildXsd", "AltzheimerBuildXsd\AltzheimerBuildXsd.csproj", "{8419FA56-8C53-4447-8CD7-04E6A26D3D7C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generics2", "Generics2\Generics2.csproj", "{A38D67BC-A33E-4D38-8A37-72C766A64C15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -303,6 +305,10 @@ Global
 		{8419FA56-8C53-4447-8CD7-04E6A26D3D7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8419FA56-8C53-4447-8CD7-04E6A26D3D7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8419FA56-8C53-4447-8CD7-04E6A26D3D7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A38D67BC-A33E-4D38-8A37-72C766A64C15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A38D67BC-A33E-4D38-8A37-72C766A64C15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A38D67BC-A33E-4D38-8A37-72C766A64C15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A38D67BC-A33E-4D38-8A37-72C766A64C15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
