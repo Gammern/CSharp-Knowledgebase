@@ -16,9 +16,9 @@ namespace XDom1
         static void Main(string[] args)
         {
             //LoadTest();
-            //FixNS();
-            //DiffTest();
-            NameSpaces();
+            FixNS();
+            DiffTest();
+            //NameSpaces();
         }
 
         private static void NameSpaces()
@@ -69,7 +69,8 @@ namespace XDom1
                 int count = diff2.Count();
             }
 
-            var diff = doc2.Descendants().Cast<XNode>().Except(doc1.Descendants().Cast<XNode>(), new XNodeEqualityComparer());
+            var diff = doc2.Descendants().Cast<XNode>().Except(doc1.Descendants().Cast<XNode>(), comparer);// new XNodeEqualityComparer());
+            int count2 = diff.Count();
             foreach (var item in diff.Cast<XElement>())
             {
                 Console.WriteLine( PrintLocalName(item));
