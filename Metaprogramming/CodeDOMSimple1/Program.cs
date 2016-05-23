@@ -27,13 +27,37 @@ namespace CodeDOMSimple1
                 BracingStyle = "C",
                 BlankLinesBetweenMembers = false
             };
+
+            AddMyClass(progNamespace);
+
             var codeText = new StringBuilder();
             using (var codeWriter = new StringWriter(codeText))
             {
-                CodeDomProvider.CreateProvider("c++").GenerateCodeFromNamespace(progNamespace, codeWriter, compilerOptions);
+                CodeDomProvider.CreateProvider("c#").GenerateCodeFromNamespace(progNamespace, codeWriter, compilerOptions);
             }
             var script = codeText.ToString();
             Console.WriteLine(script);
+        }
+
+        private static void AddMyClass(CodeNamespace progNamespace)
+        {
+            var myClass = new CodeTypeDeclaration("MyClass");
+            //myClass.Members.Add()
+            var implicitAssignMethod = new CodeMemberMethod
+            {
+                Attributes = MemberAttributes.Static,
+                Name = "MyClassAssign",
+                Parameters = 
+                {
+                    new CodeParameterDeclarationExpression(typeof(string), "value")
+                },
+                Statements =
+                {
+                    new CodeMethodInvokeExpression(new CodeSnippetExpression("Console"), "WriteLine", new CodePrimitiveExpression("Hello, world!"))
+                },
+            };
+            myClass.Members.Add(implicitAssignMethod);
+            progNamespace.Types.Add(myClass);
         }
 
         static void ShowInstalledLanguages()
