@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace XmlSerialization
         static Type[] subtypes = new Type[] {typeof(StudentType), typeof(TeacherType) };
         static void Main(string[] args)
         {
-            PersonType t = new TeacherType { Name = "Teacher", Age = 30, ID = 2, KeyData = new byte[] { 1, 2, 3, 4, 5 } };
+            PersonType t = new TeacherType { Name = "Teacher", Age = 30, ID = 2, KeyData = new byte[] { 1, 2, 3, 4, 5 }, StartTime = TimeSpan.Parse("12:01", CultureInfo.InvariantCulture) };
             PersonType s = new StudentType { Name = "Student", Age = 30, ID = 2, KeyData = new byte[] { 1, 2, 3, 4, 5 }, HomeAddress = new Address { Street="Mystreet 5", PostCode="1234" } };
             SerializePerson(t, "teacher.xml");
             SerializePerson(s, "student.xml");

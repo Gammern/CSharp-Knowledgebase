@@ -12,6 +12,8 @@ namespace XmlSerialization
     [XmlType("Envelope", Namespace = "http://mynamespace/test/2016/envelope")]
     public class EnvelopeType
     {
+        [XmlElement("Student",typeof(StudentType))]
+        [XmlElement("Teacher",typeof(TeacherType))]
         public PersonType Person { get; set; }
     }
     // props/fields must be public in order to be serialized with XmlSerializer
@@ -49,7 +51,17 @@ namespace XmlSerialization
     [Serializable]
     [XmlType("Teacher", Namespace = "http://mynamespace/test/2016/teacher")]
     //[XmlRoot("Teacher", Namespace = "http://mynamespace/test/2016/teacher", IsNullable = false)]
-    public class TeacherType : PersonType { };
+    public class TeacherType : PersonType
+    {
+        [XmlIgnore]
+        public TimeSpan StartTime;
+        [XmlElement("startTime")]
+        public string StatTimeAsString
+        {
+            get { return StartTime.ToString(); }
+            set { StartTime = TimeSpan.Parse(value); }
+        }
+    };
 
     public class Address
     {
