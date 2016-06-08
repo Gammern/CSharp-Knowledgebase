@@ -13,6 +13,7 @@ namespace Projecting
         static void Main(string[] args)
         {
             ProjectionFromPRJFile();
+            //ProjectionFromDB();
         }
 
         private static void ProjectionFromPRJFile()

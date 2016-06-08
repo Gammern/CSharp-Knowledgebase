@@ -65,7 +65,7 @@ namespace XDom1
             Console.WriteLine("Docs equal: " + same);
             if (!same)
             {
-                var diff2 = doc1.Document.DescendantNodes().Except(doc2.Document.DescendantNodes()).ToArray();
+                var diff2 = doc1.Document.DescendantNodes().Except(doc2.Document.DescendantNodes(), comparer).ToArray();
                 int count = diff2.Count();
             }
 
