@@ -17,13 +17,16 @@ namespace BasicLINQ
     {
         static void Main(string[] args)
         {
+            var emptySeq = Enumerable.Empty<string>();
+
             IEnumerable<string> localSequence = new[] { "Zero", "One", "Two", "Three", "Four", "Five" };
             var even = localSequence.Where((s, i) => i % 2 == 0);
-            //var odd = localSequence.Except(even);
-            var odd = System.Linq.Enumerable.Except(localSequence, even);
+            var odd = localSequence.Except(even);
+            odd = System.Linq.Enumerable.Except(localSequence, even);
 
-            Console.WriteLine("Even ones: " + T(even));
-            Console.WriteLine("Odd ones: " + T(odd));
+            Func<IEnumerable<string>, string> SJoin = seq => string.Join(",", seq);
+            Console.WriteLine("Even ones: " + string.Join(",", even));
+            Console.WriteLine("Odd ones: " + SJoin(odd));
 
             //Predicate<string>
             Func<string, bool> containA = (s) => s.Contains('a');
@@ -33,20 +36,20 @@ namespace BasicLINQ
                 .Where(containA)
                 .OrderBy(n => n.Length)
                 .Select(n => n.ToUpper());
-            Console.WriteLine("Names : " + T(query));
+            Console.WriteLine("Names : " + SJoin(query));
             // query syntax
             var query2 = from n in names
                          where n.Contains('a')
                          orderby n.Length
                          select n.ToUpper();
-            Console.WriteLine("Names2: " + T(query2));
+            Console.WriteLine("Names2: " + SJoin(query2));
 
             query = names
                 .Select(n => n.Replace("a", "").Replace("e", "").Replace("i", "").Replace("o", "").Replace("u", ""))
                 .Where(n => n.Length > 2)
                 .OrderBy(n => n);
 
-            Console.WriteLine("RESULT: " + T(query));
+            Console.WriteLine("RESULT: " + SJoin(query));
 
             query =
                 from n in names
@@ -54,22 +57,17 @@ namespace BasicLINQ
                 orderby n
                 select n.Replace("a", "").Replace("e", "").Replace("i", "").Replace("o", "").Replace("u", "");
 
-            Console.WriteLine("RESULT: " + T(query)); // wrong
+            Console.WriteLine("RESULT: " + SJoin(query)); // wrong
             // solve by "into" (kind of restart query)
             query =
                 from n in names
                 select n.Replace("a", "").Replace("e", "").Replace("i", "").Replace("o", "").Replace("u", "")
                 into noVowel
-                    where noVowel.Length > 2 orderby noVowel select noVowel;
+                where noVowel.Length > 2
+                orderby noVowel
+                select noVowel;
 
-            Console.WriteLine("RESULT: " + T(query));
-
-
-        }
-
-        public static string T(IEnumerable<string> seq)
-        {
-            return string.Join(" ", seq);
+            Console.WriteLine("RESULT: " + SJoin(query));
         }
     }
 }

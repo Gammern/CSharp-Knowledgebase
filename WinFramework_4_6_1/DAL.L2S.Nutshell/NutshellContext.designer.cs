@@ -133,7 +133,7 @@ namespace DAL.L2S.Nutshell
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
 		public string Name
 		{
 			get
@@ -209,6 +209,8 @@ namespace DAL.L2S.Nutshell
 		
 		private System.Nullable<int> _CustomerID;
 		
+		private System.DateTime _Date;
+		
 		private string _Description;
 		
 		private decimal _Price;
@@ -223,6 +225,8 @@ namespace DAL.L2S.Nutshell
     partial void OnIDChanged();
     partial void OnCustomerIDChanging(System.Nullable<int> value);
     partial void OnCustomerIDChanged();
+    partial void OnDateChanging(System.DateTime value);
+    partial void OnDateChanged();
     partial void OnDescriptionChanging(string value);
     partial void OnDescriptionChanged();
     partial void OnPriceChanging(decimal value);
@@ -275,6 +279,26 @@ namespace DAL.L2S.Nutshell
 					this._CustomerID = value;
 					this.SendPropertyChanged("CustomerID");
 					this.OnCustomerIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime NOT NULL")]
+		public System.DateTime Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
 				}
 			}
 		}
