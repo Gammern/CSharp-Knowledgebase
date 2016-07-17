@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://example.com/name"
+    xmlns:target="http://example.com/name"
+    elementFormDefault="qualified">
+  <group name="nameGroup">
+    <sequence>
+      <element name="first" type="string" minOccurs="1" maxOccurs="unbounded"/>
+      <element name="middle" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="last" type="string"/>
+    </sequence>
+  </group>
+  <element name="name" type="target:nameType" />
+  <complexType name="nameType">
+    <group ref="target:nameGroup"/>
+    <attribute name="title" type="string"/>
+  </complexType>
+  <!--<complexType name="nameChoiceType">
+    <choice>
+      <element name="email" type="string"/>
+      <sequence>
+        <element name="first" type="string"/>
+        <element name="middle" type="string"/>
+        <element name="last" type="string"/>
+      </sequence>
+    </choice>
+  </complexType>
+  <complexType name="nameAllType">
+    <all>
+      <element name="first" type="string"/>
+      <element name="namex" type="target:nameType"/>
+      <element ref="target:name"/>
+    </all>
+  </complexType>
+  <simpleType name="mySimple">
+    <restriction base="time"/>
+  </simpleType>-->
+</schema>

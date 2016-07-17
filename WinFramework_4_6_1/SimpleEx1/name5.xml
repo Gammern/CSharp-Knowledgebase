@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<name xmlns="http://example.com/name"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://example.com/name name5.xsd"
+      title="Mr.">
+  <first>Johan</first>
+  <first>Jo</first>
+  <middle>Karl</middle>
+  <last>Larsen</last>
+</name>

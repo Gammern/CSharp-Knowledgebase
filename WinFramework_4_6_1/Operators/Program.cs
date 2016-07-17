@@ -58,10 +58,9 @@ namespace Operators
             string[] players = { "Tom", "Jay", "Mary" };
             var query = from player1 in players
                         from player2 in players
-                        where player1.CompareTo(player2) < 0
+                        where player1.CompareTo(player2) != 0
                         select player1 + " x " + player2;
-            Console.WriteLine(TS(query.Select(s => s + "\n")));
-
+            query.ToList().ForEach(Console.WriteLine);
         }
 
         private static void SelectManySample()

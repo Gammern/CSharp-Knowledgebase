@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema id="contacts"
+    targetNamespace="http://example.com/contacts"
+    elementFormDefault="qualified"
+    xmlns:contacts="http://example.com/contacts"
+    xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="contacs">
+    <complexType>
+      <sequence>
+        <element name="contact" minOccurs="0" maxOccurs="unbounded">
+          <complexType>
+            <sequence>
+              <element name="name" type="contacts:NameType"/>
+              <element name="location" type="contacts:LocationType"/>
+              <element name="phone">
+                <complexType>
+                  <simpleContent>
+                    <extension base="string">
+                      <attribute name="kind" type="string" default="Home"/>
+                    </extension>
+                  </simpleContent>
+                </complexType>
+              </element>
+            </sequence>
+          </complexType>
+        </element>
+      </sequence>
+    </complexType>
+  </element>
+  
+  <attributeGroup name="ContactAttributes">
+    <attribute name="version" type="string" fixed="1.0"/>
+    <attribute name="source" type="string"/>
+  </attributeGroup>
+
+  <attribute name="title" type="string"/>
+  
+  <complexType name="NameType">
+    <group ref="contacts:NameGroup"/>
+  </complexType>
+  <group name="NameGroup">
+    <sequence>
+      <element name="first" type="string" minOccurs="1" maxOccurs="unbounded"/>
+      <element name="middle" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="last" type="string"/>
+    </sequence>
+  </group>
+
+  <complexType name="LocationType">
+    <choice minOccurs="0" maxOccurs="unbounded">
+      <element name="address" type="string"/>
+      <sequence>
+        <element name="latitude" type="string"/>
+        <element name="longitude" type="string"/>
+      </sequence>  
+    </choice>
+  </complexType>
+
+  <complexType name="KnowsType"></complexType>
+
+  <complexType name="DescriptionType" mixed="true">
+    <choice minOccurs="0" maxOccurs="unbounded">
+      <element name="em" type="string"/>
+      <element name="strong" type="string"/>
+      <element name="br" type="string"/>
+    </choice>
+  </complexType>
+</schema>
